@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" font-family="PingFang SC, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif">
+  <!-- ============== Defs ============== -->
+  <defs>
+    <!-- 手机外壳 -->
+    <linearGradient id="phoneFrame" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#0e0e0e"/>
+    </linearGradient>
+
+    <!-- 顶部导航绿色渐变 -->
+    <linearGradient id="navGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#66BB6A"/>
+      <stop offset="100%" stop-color="#43A047"/>
+    </linearGradient>
+
+    <!-- 学姐头像底色 -->
+    <radialGradient id="assistantBg" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#A5D6A7"/>
+      <stop offset="100%" stop-color="#43A047"/>
+    </radialGradient>
+
+    <!-- 男生头像底色 -->
+    <radialGradient id="boyBg" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#90CAF9"/>
+      <stop offset="100%" stop-color="#1E88E5"/>
+    </radialGradient>
+
+    <!-- 用户气泡渐变 -->
+    <linearGradient id="userBubble" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#66BB6A"/>
+      <stop offset="100%" stop-color="#43A047"/>
+    </linearGradient>
+
+    <!-- 发送按钮 -->
+    <linearGradient id="sendBtn" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#66BB6A"/>
+      <stop offset="100%" stop-color="#388E3C"/>
+    </linearGradient>
+
+    <!-- 卡片光泽 -->
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F1F8E9"/>
+    </linearGradient>
+
+    <!-- 阴影滤镜 -->
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+    <filter id="navShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#2E7D32" flood-opacity="0.25"/>
+    </filter>
+
+    <!-- 屏幕裁剪 -->
+    <clipPath id="screenClip">
+      <rect x="10" y="10" width="370" height="824" rx="48" ry="48"/>
+    </clipPath>
+  </defs>
+
+  <!-- ============== 手机外壳 ============== -->
+  <rect x="0" y="0" width="390" height="844" rx="56" ry="56" fill="url(#phoneFrame)"/>
+  <rect x="6" y="6" width="378" height="832" rx="52" ry="52" fill="#1a1a1a"/>
+
+  <!-- ============== 屏幕 ============== -->
+  <g clip-path="url(#screenClip)">
+    <!-- 背景 -->
+    <rect x="10" y="10" width="370" height="824" fill="#F5F5F5"/>
+
+    <!-- ===== 状态栏 ===== -->
+    <g>
+      <!-- 灵动岛 -->
+      <rect x="153" y="22" width="84" height="28" rx="14" ry="14" fill="#000"/>
+      <!-- 时间 -->
+      <text x="38" y="40" font-size="15" font-weight="600" fill="#1a1a1a">9:41</text>
+      <!-- 信号 -->
+      <g transform="translate(305,30)">
+        <rect x="0" y="6" width="3" height="4" rx="0.5" fill="#1a1a1a"/>
+        <rect x="5" y="4" width="3" height="6" rx="0.5" fill="#1a1a1a"/>
+        <rect x="10" y="2" width="3" height="8" rx="0.5" fill="#1a1a1a"/>
+        <rect x="15" y="0" width="3" height="10" rx="0.5" fill="#1a1a1a"/>
+      </g>
+      <!-- WiFi -->
+      <g transform="translate(327,32)" fill="#1a1a1a">
+        <path d="M0,5 A7,7 0 0 1 14,5 L12,7 A4.5,4.5 0 0 0 2,7 Z"/>
+        <circle cx="7" cy="8.5" r="1.5"/>
+      </g>
+      <!-- 电池 -->
+      <g transform="translate(345,30)">
+        <rect x="0" y="0" width="22" height="10" rx="2" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+        <rect x="23" y="3" width="2" height="4" rx="0.5" fill="#1a1a1a"/>
+        <rect x="2" y="2" width="16" height="6" rx="1" fill="#1a1a1a"/>
+      </g>
+    </g>
+
+    <!-- ===== 顶部导航栏 ===== -->
+    <g filter="url(#navShadow)">
+      <rect x="10" y="58" width="370" height="74" fill="url(#navGrad)"/>
+    </g>
+    <!-- 返回 -->
+    <g transform="translate(28,82)" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="14,4 4,14 14,24"/>
+    </g>
+
+    <!-- 学姐头像（小） -->
+    <g transform="translate(58,72)">
+      <circle cx="23" cy="23" r="23" fill="url(#assistantBg)" stroke="#fff" stroke-width="2"/>
+      <!-- 齐刘海 -->
+      <path d="M6,18 Q23,4 40,18 L40,22 Q23,14 6,22 Z" fill="#3E2723"/>
+      <!-- 脸 -->
+      <ellipse cx="23" cy="26" rx="13" ry="14" fill="#FFE0B2"/>
+      <!-- 圆眼镜 -->
+      <circle cx="17" cy="25" r="3.5" fill="none" stroke="#3E2723" stroke-width="1.4"/>
+      <circle cx="29" cy="25" r="3.5" fill="none" stroke="#3E2723" stroke-width="1.4"/>
+      <line x1="20.5" y1="25" x2="25.5" y2="25" stroke="#3E2723" stroke-width="1.2"/>
+      <!-- 嘴 -->
+      <path d="M20,32 Q23,34 26,32" stroke="#D84315" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      <!-- 金币 -->
+      <circle cx="36" cy="14" r="6" fill="#FFC107" stroke="#fff" stroke-width="1.2"/>
+      <text x="36" y="17" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">¥</text>
+    </g>
+
+    <!-- 标题 -->
+    <text x="115" y="92" font-size="17" font-weight="700" fill="#fff">攒钱搭子 🎓</text>
+    <text x="115" y="112" font-size="11.5" fill="#E8F5E9">小钱学姐 · 🧠 Agent 模式</text>
+
+    <!-- 右上菜单 -->
+    <g transform="translate(338,90)" fill="#fff">
+      <circle cx="0" cy="0" r="2.2"/>
+      <circle cx="8" cy="0" r="2.2"/>
+      <circle cx="16" cy="0" r="2.2"/>
+    </g>
+
+    <!-- ===== 聊天区域 ===== -->
+
+    <!-- 时间分隔 -->
+    <g>
+      <rect x="170" y="148" width="50" height="20" rx="10" fill="#E0E0E0"/>
+      <text x="195" y="161.5" font-size="10.5" fill="#757575" text-anchor="middle">10:24</text>
+    </g>
+
+    <!-- ① 学姐：欢迎语 -->
+    <g transform="translate(28,182)">
+      <!-- 小头像 -->
+      <circle cx="14" cy="14" r="14" fill="url(#assistantBg)"/>
+      <ellipse cx="14" cy="16" rx="8" ry="9" fill="#FFE0B2"/>
+      <path d="M4,11 Q14,3 24,11 L24,14 Q14,8 4,14 Z" fill="#3E2723"/>
+      <circle cx="11" cy="16" r="2" fill="none" stroke="#3E2723" stroke-width="1"/>
+      <circle cx="17" cy="16" r="2" fill="none" stroke="#3E2723" stroke-width="1"/>
+      <line x1="13" y1="16" x2="15" y2="16" stroke="#3E2723" stroke-width="0.8"/>
+      <!-- 气泡 -->
+      <g filter="url(#softShadow)">
+        <path d="M36,4 L240,4 Q252,4 252,16 L252,56 Q252,68 240,68 L48,68 Q36,68 36,56 L36,16 Q36,4 48,4 Z M36,16 L30,12 L36,22 Z" fill="#fff"/>
+      </g>
+      <text x="46" y="24" font-size="13" fill="#212121">嗨～我是小钱学姐 👋</text>
+      <text x="46" y="44" font-size="13" fill="#212121">先告诉我你现在大几啦？</text>
+      <text x="46" y="62" font-size="13" fill="#212121">这样我能更懂你的需求 ✨</text>
+    </g>
+
+    <!-- ② 学姐：选项胶囊（年级） -->
+    <g transform="translate(64,266)">
+      <!-- 大一 -->
+      <rect x="0" y="0" width="62" height="32" rx="16" fill="#fff" stroke="#C8E6C9" stroke-width="1.5"/>
+      <text x="31" y="20.5" font-size="12.5" fill="#43A047" text-anchor="middle" font-weight="600">大一</text>
+      <!-- 大二 -->
+      <rect x="70" y="0" width="62" height="32" rx="16" fill="#fff" stroke="#C8E6C9" stroke-width="1.5"/>
+      <text x="101" y="20.5" font-size="12.5" fill="#43A047" text-anchor="middle" font-weight="600">大二</text>
+      <!-- 大三 -->
+      <rect x="140" y="0" width="62" height="32" rx="16" fill="#fff" stroke="#C8E6C9" stroke-width="1.5"/>
+      <text x="171" y="20.5" font-size="12.5" fill="#43A047" text-anchor="middle" font-weight="600">大三</text>
+      <!-- 大四 -->
+      <rect x="210" y="0" width="62" height="32" rx="16" fill="#fff" stroke="#C8E6C9" stroke-width="1.5"/>
+      <text x="241" y="20.5" font-size="12.5" fill="#43A047" text-anchor="middle" font-weight="600">大四</text>
+    </g>
+
+    <!-- ③ 用户回复：大一 -->
+    <g transform="translate(286,316)">
+      <g filter="url(#softShadow)">
+        <path d="M0,4 L66,4 Q78,4 78,16 L78,32 Q78,44 66,44 L12,44 Q0,44 0,32 L0,16 Q0,4 12,4 Z M78,32 L84,38 L78,42 Z" fill="url(#userBubble)"/>
+      </g>
+      <text x="39" y="28.5" font-size="13" fill="#fff" text-anchor="middle" font-weight="500">大一 🎉</text>
+    </g>
+
+    <!-- ④ 学姐：欢迎大一 -->
+    <g transform="translate(28,376)">
+      <circle cx="14" cy="14" r="14" fill="url(#assistantBg)"/>
+      <ellipse cx="14" cy="16" rx="8" ry="9" fill="#FFE0B2"/>
+      <path d="M4,11 Q14,3 24,11 L24,14 Q14,8 4,14 Z" fill="#3E2723"/>
+      <circle cx="11" cy="16" r="2" fill="none" stroke="#3E2723" stroke-width="1"/>
+      <circle cx="17" cy="16" r="2" fill="none" stroke="#3E2723" stroke-width="1"/>
+      <line x1="13" y1="16" x2="15" y2="16" stroke="#3E2723" stroke-width="0.8"/>
+      <g filter="url(#softShadow)">
+        <path d="M36,4 L260,4 Q272,4 272,16 L272,40 Q272,52 260,52 L48,52 Q36,52 36,40 L36,16 Q36,4 48,4 Z M36,16 L30,12 L36,22 Z" fill="#fff"/>
+      </g>
+      <text x="46" y="24" font-size="13" fill="#212121">大一新生你好呀！🌱 试试和我说</text>
+      <text x="46" y="44" font-size="13" fill="#212121">"奶茶15 午餐18"，我帮你记账～</text>
+    </g>
+
+    <!-- ⑤ 用户：奶茶15 午餐18 -->
+    <g transform="translate(232,448)">
+      <g filter="url(#softShadow)">
+        <path d="M0,4 L120,4 Q132,4 132,16 L132,32 Q132,44 120,44 L12,44 Q0,44 0,32 L0,16 Q0,4 12,4 Z M132,32 L138,38 L132,42 Z" fill="url(#userBubble)"/>
+      </g>
+      <text x="66" y="28.5" font-size="13" fill="#fff" text-anchor="middle" font-weight="500">奶茶15 午餐18</text>
+    </g>
+
+    <!-- ⑥ 学姐：消费记录卡片 -->
+    <g transform="translate(28,508)">
+      <circle cx="14" cy="14" r="14" fill="url(#assistantBg)"/>
+      <ellipse cx="14" cy="16" rx="8" ry="9" fill="#FFE0B2"/>
+      <path d="M4,11 Q14,3 24,11 L24,14 Q14,8 4,14 Z" fill="#3E2723"/>
+      <circle cx="11" cy="16" r="2" fill="none" stroke="#3E2723" stroke-width="1"/>
+      <circle cx="17" cy="16" r="2" fill="none" stroke="#3E2723" stroke-width="1"/>
+      <line x1="13" y1="16" x2="15" y2="16" stroke="#3E2723" stroke-width="0.8"/>
+
+      <!-- 卡片 -->
+      <g filter="url(#softShadow)">
+        <rect x="36" y="4" width="248" height="118" rx="14" fill="url(#cardGrad)" stroke="#C8E6C9" stroke-width="1"/>
+      </g>
+      <!-- 卡片标题条 -->
+      <text x="50" y="26" font-size="13" font-weight="700" fill="#2E7D32">📊 今日消费记录</text>
+      <line x1="50" y1="34" x2="270" y2="34" stroke="#E0E0E0" stroke-width="1"/>
+
+      <!-- 行1：奶茶 -->
+      <g transform="translate(50,46)">
+        <circle cx="9" cy="9" r="9" fill="#FFE0B2"/>
+        <text x="9" y="13" font-size="11" text-anchor="middle">🧋</text>
+        <text x="26" y="13" font-size="12.5" fill="#424242">奶茶</text>
+        <text x="220" y="13" font-size="12.5" font-weight="600" fill="#E53935" text-anchor="end">- ¥15</text>
+      </g>
+      <!-- 行2：午餐 -->
+      <g transform="translate(50,70)">
+        <circle cx="9" cy="9" r="9" fill="#FFCCBC"/>
+        <text x="9" y="13" font-size="11" text-anchor="middle">🍱</text>
+        <text x="26" y="13" font-size="12.5" fill="#424242">午餐</text>
+        <text x="220" y="13" font-size="12.5" font-weight="600" fill="#E53935" text-anchor="end">- ¥18</text>
+      </g>
+      <line x1="50" y1="98" x2="270" y2="98" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="50" y="114" font-size="12" fill="#757575">合计</text>
+      <text x="270" y="114" font-size="13" font-weight="700" fill="#2E7D32" text-anchor="end">- ¥33</text>
+    </g>
+
+    <!-- ⑦ 学姐：打字中... -->
+    <g transform="translate(28,640)">
+      <circle cx="14" cy="14" r="14" fill="url(#assistantBg)"/>
+      <ellipse cx="14" cy="16" rx="8" ry="9" fill="#FFE0B2"/>
+      <path d="M4,11 Q14,3 24,11 L24,14 Q14,8 4,14 Z" fill="#3E2723"/>
+      <circle cx="11" cy="16" r="2" fill="none" stroke="#3E2723" stroke-width="1"/>
+      <circle cx="17" cy="16" r="2" fill="none" stroke="#3E2723" stroke-width="1"/>
+      <line x1="13" y1="16" x2="15" y2="16" stroke="#3E2723" stroke-width="0.8"/>
+      <g filter="url(#softShadow)">
+        <path d="M36,4 L96,4 Q108,4 108,16 L108,32 Q108,44 96,44 L48,44 Q36,44 36,32 L36,16 Q36,4 48,4 Z M36,16 L30,12 L36,22 Z" fill="#fff"/>
+      </g>
+      <!-- 三个跳动点 -->
+      <circle cx="58" cy="24" r="3.2" fill="#9E9E9E">
+        <animate attributeName="cy" values="24;19;24" dur="1.2s" repeatCount="indefinite" begin="0s"/>
+      </circle>
+      <circle cx="72" cy="24" r="3.2" fill="#9E9E9E">
+        <animate attributeName="cy" values="24;19;24" dur="1.2s" repeatCount="indefinite" begin="0.2s"/>
+      </circle>
+      <circle cx="86" cy="24" r="3.2" fill="#9E9E9E">
+        <animate attributeName="cy" values="24;19;24" dur="1.2s" repeatCount="indefinite" begin="0.4s"/>
+      </circle>
+    </g>
+
+    <!-- ===== 快捷入口栏 ===== -->
+    <g transform="translate(10,696)">
+      <rect x="0" y="0" width="370" height="62" fill="#FFFFFF"/>
+      <line x1="0" y1="0" x2="370" y2="0" stroke="#EEEEEE" stroke-width="1"/>
+      <!-- 5 个按钮 -->
+      <g font-size="10.5" fill="#616161" text-anchor="middle">
+        <g transform="translate(45,12)">
+          <circle cx="0" cy="12" r="16" fill="#E8F5E9"/>
+          <text y="17" font-size="16" text-anchor="middle">📊</text>
+          <text y="44">消费分析</text>
+        </g>
+        <g transform="translate(115,12)">
+          <circle cx="0" cy="12" r="16" fill="#E8F5E9"/>
+          <text y="17" font-size="16" text-anchor="middle">💰</text>
+          <text y="44">收入分析</text>
+        </g>
+        <g transform="translate(185,12)">
+          <circle cx="0" cy="12" r="16" fill="#E8F5E9"/>
+          <text y="17" font-size="16" text-anchor="middle">🎯</text>
+          <text y="44">储蓄目标</text>
+        </g>
+        <g transform="translate(255,12)">
+          <circle cx="0" cy="12" r="16" fill="#E8F5E9"/>
+          <text y="17" font-size="16" text-anchor="middle">💡</text>
+          <text y="44">理财</text>
+        </g>
+        <g transform="translate(325,12)">
+          <circle cx="0" cy="12" r="16" fill="#E8F5E9"/>
+          <text y="17" font-size="16" text-anchor="middle">👥</text>
+          <text y="44">社区</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- ===== 输入区 ===== -->
+    <g transform="translate(10,758)">
+      <rect x="0" y="0" width="370" height="56" fill="#FFFFFF"/>
+      <line x1="0" y1="0" x2="370" y2="0" stroke="#EEEEEE" stroke-width="1"/>
+      <!-- 语音按钮 -->
+      <circle cx="26" cy="28" r="16" fill="#F5F5F5"/>
+      <g transform="translate(20,20)" stroke="#616161" stroke-width="1.6" fill="none" stroke-linecap="round">
+        <rect x="4" y="0" width="4" height="9" rx="2" fill="#616161"/>
+        <path d="M1,8 Q1,12 6,12 Q11,12 11,8"/>
+        <line x1="6" y1="12" x2="6" y2="15"/>
+      </g>
+      <!-- 输入框 -->
+      <rect x="50" y="12" width="252" height="32" rx="16" fill="#F5F5F5"/>
+      <text x="62" y="32" font-size="11.5" fill="#9E9E9E">发"奶茶15"记账，或问"什么是基金"...</text>
+      <!-- emoji icon -->
+      <circle cx="288" cy="28" r="8" fill="none" stroke="#9E9E9E" stroke-width="1.2"/>
+      <circle cx="285" cy="26" r="1" fill="#9E9E9E"/>
+      <circle cx="291" cy="26" r="1" fill="#9E9E9E"/>
+      <path d="M284,30 Q288,33 292,30" stroke="#9E9E9E" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <!-- 发送按钮 -->
+      <circle cx="332" cy="28" r="18" fill="url(#sendBtn)" filter="url(#softShadow)"/>
+      <g transform="translate(323,19)" fill="#fff">
+        <path d="M0,9 L18,0 L14,9 L18,18 Z" />
+      </g>
+    </g>
+
+    <!-- ===== Home Indicator ===== -->
+    <rect x="135" y="822" width="120" height="5" rx="2.5" fill="#1a1a1a" opacity="0.85"/>
+  </g>
+</svg>

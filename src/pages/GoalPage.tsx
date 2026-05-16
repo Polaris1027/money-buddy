@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useAppStore } from '@/store/useAppStore';
 import { fmtCurrency } from '@/utils/date';
-import { getGoalStatus } from '@/services/goalService';
+import { getGoalStatus, getSavingStage } from '@/services/goalService';
 import PageHeader from '@/components/PageHeader';
 import GoalEditModal from '@/components/GoalEditModal';
+import GoalCreateModal from '@/components/GoalCreateModal';
+import GrowthTree from '@/components/GrowthTree';
 import type { SavingGoal } from '@/types';
 import dayjs from 'dayjs';
 
@@ -13,12 +15,16 @@ interface Props {
 
 export default function GoalPage({ onBack }: Props) {
   const goals = useAppStore((s) => s.goals);
+  const addGoal = useAppStore((s) => s.addGoal);
   const addCheckin = useAppStore((s) => s.addCheckin);
   const removeGoal = useAppStore((s) => s.removeGoal);
   const updateGoal = useAppStore((s) => s.updateGoal);
   const [activeGoalId, setActiveGoalId] = useState<string | null>(null);
   const [checkinAmount, setCheckinAmount] = useState('');
   const [editingGoal, setEditingGoal] = useState<SavingGoal | null>(null);
+  const [creating, setCreating] = useState(false);
+  /** 当前展开成长路径的目标 id（点击卡片右上角"成长路径"按钮可展开/收起） */
+  const [expandedTreeId, setExpandedTreeId] = useState<string | null>(null);
 
   const active = goals.filter((g) => g.status === 'active');
   const completed = goals.filter((g) => g.status === 'completed');
@@ -33,14 +39,52 @@ export default function GoalPage({ onBack }: Props) {
 
   return (
     <div className="h-full flex flex-col bg-bg">
-      <PageHeader title="储蓄目标 🎯" onBack={onBack} />
+      <PageHeader
+        title="储蓄目标 🎯"
+        onBack={onBack}
+        right={
+          <button
+            onClick={() => setCreating(true)}
+            className="w-9 h-9 flex items-center justify-center text-brand-600 hover:text-brand-700 active:scale-95"
+            aria-label="新建储蓄目标"
+            title="新建储蓄目标"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+          </button>
+        }
+      />
       <div className="flex-1 overflow-y-auto scroll-thin p-4 space-y-4">
         {goals.length === 0 ? (
-          <div className="bg-white rounded-2xl p-8 shadow-sm text-center">
-            <div className="text-4xl mb-2">🎯</div>
-            <div className="text-sm text-gray-700 mb-1">还没有储蓄目标哦~</div>
-            <div className="text-xs text-gray-400">
-              回到对话页，告诉学姐"我想攒3000块去旅游" ✨
+          <div className="space-y-4">
+            <div className="bg-white rounded-2xl p-8 shadow-sm text-center">
+              <div className="text-4xl mb-2">🎯</div>
+              <div className="text-sm text-gray-700 mb-1">还没有储蓄目标哦~</div>
+              <div className="text-xs text-gray-400 mb-4">
+                设个小目标，让小钱学姐陪你一起攒 ✨
+              </div>
+              <div className="flex gap-2 justify-center">
+                <button
+                  onClick={() => setCreating(true)}
+                  className="px-4 py-2 bg-brand-500 text-white rounded-lg text-sm font-medium hover:bg-brand-600 active:scale-95"
+                >
+                  + 新建目标
+                </button>
+                <button
+                  onClick={onBack}
+                  className="px-4 py-2 bg-brand-50 text-brand-700 rounded-lg text-sm hover:bg-brand-100 active:scale-95"
+                >
+                  和学姐聊聊
+                </button>
+              </div>
+            </div>
+
+            {/* 成长路径预览（即使没目标也展示一下，让用户了解会经历哪些阶段） */}
+            <div>
+              <div className="text-xs text-gray-500 mb-2 px-1">你的成长路径将会是 ✨</div>
+              <GrowthTree progress={0} />
             </div>
           </div>
         ) : (
@@ -51,6 +95,8 @@ export default function GoalPage({ onBack }: Props) {
                 <div className="space-y-3">
                   {active.map((g) => {
                     const s = getGoalStatus(g);
+                    const stage = getSavingStage(s.progress);
+                    const treeOpen = expandedTreeId === g.goalId;
                     return (
                       <div
                         key={g.goalId}
@@ -79,23 +125,27 @@ export default function GoalPage({ onBack }: Props) {
                           </button>
                         </div>
 
+                        {/* 当前等级徽章（紧凑模式） */}
+                        <div className="mb-2">
+                          <GrowthTree progress={s.progress} compact />
+                        </div>
+
                         <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden mb-2">
                           <div
-                            className={`h-full transition-all duration-700 ${
-                              s.progressPercent >= 80
-                                ? 'bg-gradient-to-r from-brand-400 to-brand-600'
-                                : 'bg-gradient-to-r from-brand-300 to-brand-500'
-                            }`}
-                            style={{ width: `${s.progressPercent}%` }}
+                            className="h-full transition-all duration-700"
+                            style={{
+                              width: `${s.progressPercent}%`,
+                              background: `linear-gradient(90deg, ${stage.color}aa, ${stage.color})`,
+                            }}
                           />
                         </div>
 
-                        <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
+                        <div className="flex items-center justify-between text-xs text-gray-500 mb-2">
                           <span>
                             已攒 {fmtCurrency(g.currentAmount)} / 还差{' '}
                             {fmtCurrency(s.remainingAmount)}
                           </span>
-                          <span className="font-semibold text-brand-600">
+                          <span className="font-semibold" style={{ color: stage.color }}>
                             {s.progressPercent}%
                           </span>
                         </div>
@@ -108,6 +158,32 @@ export default function GoalPage({ onBack }: Props) {
                             ) : (
                               <span className="text-orange-500 ml-1">⏳ 需要加快</span>
                             )}
+                          </div>
+                        )}
+
+                        {/* 展开/收起完整成长路径 */}
+                        <button
+                          onClick={() =>
+                            setExpandedTreeId(treeOpen ? null : g.goalId)
+                          }
+                          className="text-xs text-brand-600 hover:text-brand-700 mb-2 flex items-center gap-1"
+                        >
+                          {treeOpen ? '收起' : '查看'}成长路径
+                          <svg
+                            width="10"
+                            height="10"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                            className={`transition-transform ${treeOpen ? 'rotate-180' : ''}`}
+                          >
+                            <polyline points="6 9 12 15 18 9" />
+                          </svg>
+                        </button>
+                        {treeOpen && (
+                          <div className="mb-3 animate-fade-in">
+                            <GrowthTree progress={s.progress} />
                           </div>
                         )}
 
@@ -197,6 +273,13 @@ export default function GoalPage({ onBack }: Props) {
           onClose={() => setEditingGoal(null)}
           onSave={(patch) => updateGoal(editingGoal.goalId, patch)}
           onDelete={() => removeGoal(editingGoal.goalId)}
+        />
+      )}
+
+      {creating && (
+        <GoalCreateModal
+          onClose={() => setCreating(false)}
+          onCreate={(data) => addGoal(data)}
         />
       )}
     </div>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  iPhone 15 Pro Max 空白手机壳
+  逻辑分辨率：430 × 932 (points)
+  屏幕圆角：约 55pt
+  机身圆角：约 63pt
+  灵动岛：126 × 37，距顶 11
+  Home Indicator：139 × 5，距底 8
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="430" height="932"
+     viewBox="0 0 430 932">
+  <defs>
+    <!-- 钛金属边框渐变（深灰 → 黑） -->
+    <linearGradient id="frameGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#3a3a3c"/>
+      <stop offset="50%" stop-color="#1c1c1e"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+
+    <!-- 屏幕区域裁剪（你之后画的内容只要放在 <g clip-path="url(#screen)"> 里就会被裁成圆角） -->
+    <clipPath id="screen">
+      <rect x="14" y="14" width="402" height="904" rx="55" ry="55"/>
+    </clipPath>
+  </defs>
+
+  <!-- ===== 机身外框 ===== -->
+  <rect x="0" y="0" width="430" height="932" rx="63" ry="63" fill="url(#frameGrad)"/>
+
+  <!-- ===== 内圈黑边（机身与屏幕之间的边框） ===== -->
+  <rect x="6" y="6" width="418" height="920" rx="59" ry="59" fill="#000000"/>
+
+  <!-- ===== 屏幕（白底，你自己的内容覆盖到这层之上即可） ===== -->
+  <rect x="14" y="14" width="402" height="904" rx="55" ry="55" fill="#ffffff"/>
+
+  <!-- =========================================================
+       👇 在这里添加你的界面内容
+       建议包一层 <g clip-path="url(#screen)"> ... </g>
+       这样超出屏幕的元素会自动被裁成圆角。
+       例如：
+       <g clip-path="url(#screen)">
+         <rect x="14" y="14" width="402" height="904" fill="#F5F5F5"/>
+         ...你的内容...
+       </g>
+       ========================================================= -->
+
+  <!-- ===== 灵动岛（始终在最上层） ===== -->
+  <rect x="152" y="11" width="126" height="37" rx="18.5" ry="18.5" fill="#000000"/>
+
+  <!-- ===== Home Indicator ===== -->
+  <rect x="145.5" y="915" width="139" height="5" rx="2.5" ry="2.5" fill="#000000" opacity="0.9"/>
+
+  <!-- ===== 侧边按钮（可选装饰，不需要可删掉） ===== -->
+  <!-- 左侧：静音键 -->
+  <rect x="-1" y="150" width="3"  height="32"  rx="1" fill="#1c1c1e"/>
+  <!-- 左侧：音量+ -->
+  <rect x="-1" y="200" width="3"  height="58"  rx="1" fill="#1c1c1e"/>
+  <!-- 左侧：音量- -->
+  <rect x="-1" y="270" width="3"  height="58"  rx="1" fill="#1c1c1e"/>
+  <!-- 右侧：电源键 -->
+  <rect x="428" y="220" width="3" height="90"  rx="1" fill="#1c1c1e"/>
+</svg>
